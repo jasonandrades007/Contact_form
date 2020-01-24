@@ -2,7 +2,7 @@
 /*
 Plugin Name: Contact Form Plugin
 Plugin URI:
-Description: Simple non-bloated WordPress Contact Form
+Description: Simple WordPress Contact Form
 Version: 1.0
 Author: Jason Andrades
 Author URI: 
@@ -18,6 +18,10 @@ Author URI:
     echo '<input type="email" name="cf-email" value="' . ( isset( $_POST["cf-email"] ) ? esc_attr( $_POST["cf-email"] ) : '' ) . '" size="40" />';
     echo '</p>';
     echo '<p>';
+    echo 'Your Phone (required) <br />';
+    echo '<input type="phone" name="cf-phone" value="' . ( isset( $_POST["cf-phone"] ) ? esc_attr( $_POST["cf-phone"] ) : '' ) . '" size="40" />';
+    echo '</p>';
+    echo '<p>';
     echo 'Subject (required) <br />';
     echo '<input type="text" name="cf-subject" pattern="[a-zA-Z ]+" value="' . ( isset( $_POST["cf-subject"] ) ? esc_attr( $_POST["cf-subject"] ) : '' ) . '" size="40" />';
     echo '</p>';
@@ -28,7 +32,7 @@ Author URI:
     echo '<p><input type="submit" name="cf-submitted" value="Send"/></p>';
     echo '</form>';
 }
-function deliver_mail() {
+    function deliver_mail() {
 
     // if the submit button is clicked, send the email
     if ( isset( $_POST['cf-submitted'] ) ) {
@@ -36,6 +40,7 @@ function deliver_mail() {
         // sanitize form values
         $name    = sanitize_text_field( $_POST["cf-name"] );
         $email   = sanitize_email( $_POST["cf-email"] );
+        $phone   = sanitize_phone( $_POST["cf-phone"] );
         $subject = sanitize_text_field( $_POST["cf-subject"] );
         $message = esc_textarea( $_POST["cf-message"] );
 
@@ -62,6 +67,6 @@ function cf_shortcode() {
 
     return ob_get_clean();
 }
-add_shortcode( 'sitepoint_contact_form', 'cf_shortcode' );
+add_shortcode( 'contact_form', 'cf_shortcode' );
 
 ?>
