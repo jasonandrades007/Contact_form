@@ -18,8 +18,8 @@ Author URI:
     echo '<input type="email" name="cf-email" value="' . ( isset( $_POST["cf-email"] ) ? esc_attr( $_POST["cf-email"] ) : '' ) . '" size="40" />';
     echo '</p>';
     echo '<p>';
-    echo 'Your Phone (required) <br />';
-    echo '<input type="phone" name="cf-phone" value="' . ( isset( $_POST["cf-phone"] ) ? esc_attr( $_POST["cf-phone"] ) : '' ) . '" size="40" />';
+      echo 'Your Phone (required) <br />';
+    echo '<input type="phone" name="cf-phone" pattern="[0-9]+" value="' . ( isset( $_POST["cf-phone"] ) ? esc_attr( $_POST["cf-phone"] ) : '' ) . '" size="40" />';
     echo '</p>';
     echo '<p>';
     echo 'Subject (required) <br />';
